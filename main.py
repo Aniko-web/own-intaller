@@ -48,6 +48,8 @@ async def download_audio(url: str, chat_id: int) -> dict:
     ydl_opts = {
         "format": "bestaudio/best",
         "outtmpl": str(output_path) + ".%(ext)s",
+
+        "ffmpeg_location": "/home/aniko/ffmpeg/ffmpeg-7.0.2-amd64-static",
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
