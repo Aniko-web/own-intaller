@@ -49,7 +49,7 @@ async def download_audio(url: str, chat_id: int) -> dict:
     "format": "bestaudio/best",
     "outtmpl": str(output_path) + ".%(ext)s",
 
-    "ffmpeg_location": "/home/aniko-ss/bin",
+    "ffmpeg_location": "/home/aniko-ss/bin/ffmpeg",
 
     "postprocessors": [{
         "key": "FFmpegExtractAudio",
