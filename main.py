@@ -46,19 +46,20 @@ async def download_audio(url: str, chat_id: int) -> dict:
     """YouTube/Instagram dan audio yuklab olish"""
     output_path = DOWNLOAD_DIR / f"{chat_id}_audio"
     ydl_opts = {
-        "format": "bestaudio/best",
-        "outtmpl": str(output_path) + ".%(ext)s",
+    "format": "bestaudio/best",
+    "outtmpl": str(output_path) + ".%(ext)s",
 
-        "ffmpeg_location": "/home/aniko/ffmpeg/ffmpeg-7.0.2-amd64-static",
-        "postprocessors": [{
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "192",
-        }],
-        "quiet": True,
-        "no_warnings": True,
-        "cookiefile": "cookies.txt" if Path("cookies.txt").exists() else None,
-    }
+    "ffmpeg_location": "/home/aniko-ss/bin",
+
+    "postprocessors": [{
+        "key": "FFmpegExtractAudio",
+        "preferredcodec": "mp3",
+        "preferredquality": "192",
+    }],
+    "quiet": True,
+    "no_warnings": True,
+    "cookiefile": "cookies.txt" if Path("cookies.txt").exists() else None,
+}
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         title = info.get("title", "audio")
